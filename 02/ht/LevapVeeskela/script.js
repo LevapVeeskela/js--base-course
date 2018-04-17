@@ -76,7 +76,7 @@ function compareObjects(objA, objB) {
  * @return {function} функция с зафиксированным контекстом
  */
 const bind = (func, context) => {
-    return function () {
+    return function() {
         return func.apply(context, arguments);
     };
 }
@@ -87,6 +87,13 @@ const bind = (func, context) => {
  * (можно использовать фукнцию выше)
  */
 
+Function.prototype.myBind = function (context) {
+    var self = this;
+    return function() {
+        return self.apply(context, arguments);
+    };
+};
+  
 /**
 * Создать объект o так, чтобы каждый раз когда в коде написано 
 * o.magicProperty = 3 // (любое значение) 
@@ -191,3 +198,5 @@ function curry(func) { }
 Добавть на страницу index.html вызов календаря
 */
 function drawInteractiveCalendar(el) { }
+
+
