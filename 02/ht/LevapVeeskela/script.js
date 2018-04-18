@@ -76,7 +76,7 @@ function compareObjects(objA, objB) {
  * @return {function} функция с зафиксированным контекстом
  */
 const bind = (func, context) => {
-    return function() {
+    return function () {
         return func.apply(context, arguments);
     };
 }
@@ -89,16 +89,34 @@ const bind = (func, context) => {
 
 Function.prototype.myBind = function (context) {
     var self = this;
-    return function() {
+    return function () {
         return self.apply(context, arguments);
     };
 };
-  
+
 /**
 * Создать объект o так, чтобы каждый раз когда в коде написано 
 * o.magicProperty = 3 // (любое значение) 
 * в консоль выводилось значение, которое присваивается и текущее время
 */
+var o = {
+    magicProperty: null,
+    func: function () {
+        var myDate = new Date();
+        var time = `${myDate.getHours()} : ${myDate.getMinutes()} : ${myDate.getSeconds()}`;
+        return console.log(`${this.magicProperty}   ${time}`);
+    },
+};
+
+const checkmagicProperty = (() => {
+    var oldValue = o.magicProperty;
+    setInterval(function () {
+        if (oldValue !== o.magicProperty) {
+            o.func();
+            oldValue = o.magicProperty;
+        }
+    }, 1000);
+})();
 
 /**
 * Создать конструктор с методами, так, 
