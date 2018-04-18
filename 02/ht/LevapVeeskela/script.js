@@ -124,6 +124,27 @@ const checkmagicProperty = (() => {
 * те запуск кода ниже должен делать то, что говорят методы
 * u.askName().askAge().showAgeInConsole().showNameInAlert();
 */
+function U() {
+    var name = '';
+    var age = 0;
+    this.askName = function () { 
+        name = prompt('How are you name?');
+    };
+    this.askAge = function () { 
+        age = prompt('How are you old?'); 
+    };
+    this.showAgeInConsole = function () {
+        console.log(age);
+    }
+    this.showNameInAlert = function () {
+        alert(name);
+    }
+}
+var u = new U();
+// u.askName();
+// u.askAge();
+// u.showAgeInConsole();
+// u.showNameInAlert();
 
 /**
  * Написать фукнцию-калькулятор, которая работает следующим образом
