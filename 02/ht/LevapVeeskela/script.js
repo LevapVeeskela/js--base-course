@@ -128,16 +128,20 @@ function U() {
     var name = '';
     var age = 0;
     this.askName = function () { 
-        name = prompt('How are you name?');
+        this.name = prompt('How are you name?');
+        return this;
     };
     this.askAge = function () { 
-        age = prompt('How are you old?'); 
+        this.age = prompt('How are you old?'); 
+        return this;
     };
     this.showAgeInConsole = function () {
-        console.log(age);
+        console.log(this.age);
+        return this;
     }
     this.showNameInAlert = function () {
-        alert(name);
+        alert(this.name);
+        return this;
     }
 }
 var u = new U();
@@ -145,7 +149,7 @@ var u = new U();
 // u.askAge();
 // u.showAgeInConsole();
 // u.showNameInAlert();
-
+// u.askName().askAge().showAgeInConsole().showNameInAlert();
 /**
  * Написать фукнцию-калькулятор, которая работает следующим образом
  * calculate('+')(1)(2); // 3
