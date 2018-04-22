@@ -171,14 +171,14 @@ function calculate(operator) {
  * Создайте конструктор-синглтон? Что такое синглтон?
  * new Singleton() === new Singleton
  */
-const Singleton = (function() {
+var Singleton = (function () {
     var instance;
     function Singleton() {
-      if (instance) return instance;
-      instance = this;
+        if (instance) return instance;
+        instance = this;
     }
-     return Singleton;
-  })();
+    return Singleton;
+})();
 
 /**
   * Создайте функцию ForceConstructor
@@ -186,8 +186,12 @@ const Singleton = (function() {
   * вызвана она с new или без
   * и сохраняет параметры в создаваемый объект с именами параметров
   */
+
 function ForceContructor(a, b, c) {
-    throw "undefined";
+    if (!(this instanceof ForceContructor)) return new ForceContructor(a, b, c);
+    this.a = a;
+    this.b = b;
+    this.c = c;
 }
 
 /**
