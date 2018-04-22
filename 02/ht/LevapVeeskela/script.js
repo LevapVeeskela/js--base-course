@@ -143,7 +143,6 @@ function U() {
     }
 }
 var u = new U();
-u.askName().askAge().showAgeInConsole().showNameInAlert();
 /**
  * Написать фукнцию-калькулятор, которая работает следующим образом
  * calculate('+')(1)(2); // 3
