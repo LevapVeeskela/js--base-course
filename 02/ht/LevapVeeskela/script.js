@@ -125,8 +125,8 @@ const checkmagicProperty = (() => {
 * u.askName().askAge().showAgeInConsole().showNameInAlert();
 */
 function U() {
-    var name = '';
-    var age = 0;
+    this.name = '';
+    this.age = 0;
     this.askName = function () { 
         this.name = prompt('How are you name?');
         return this;
@@ -145,19 +145,29 @@ function U() {
     }
 }
 var u = new U();
-// u.askName();
-// u.askAge();
-// u.showAgeInConsole();
-// u.showNameInAlert();
-// u.askName().askAge().showAgeInConsole().showNameInAlert();
+
 /**
  * Написать фукнцию-калькулятор, которая работает следующим образом
  * calculate('+')(1)(2); // 3
  * calculate('*')(2)(3); // 6
  * Допустимые операции : + - * /
  */
-function calculate() {
+function calculate(operator) {
     /* put your code here */
+    return function(valueOne){
+        return function(valueTwo){
+            switch(operator){
+                case '+':
+                return valueOne + valueTwo;
+                case '-':
+                return valueOne - valueTwo;
+                case '*':
+                return valueOne * valueTwo;
+                case '/':
+                return valueOne / valueTwo;
+            }
+        }
+    }
 }
 
 /**
