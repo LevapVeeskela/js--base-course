@@ -125,14 +125,12 @@ const checkmagicProperty = (() => {
 * u.askName().askAge().showAgeInConsole().showNameInAlert();
 */
 function U() {
-    this.name = '';
-    this.age = 0;
-    this.askName = function () { 
+    this.askName = function () {
         this.name = prompt('How are you name?');
         return this;
     };
-    this.askAge = function () { 
-        this.age = prompt('How are you old?'); 
+    this.askAge = function () {
+        this.age = prompt('How are you old?');
         return this;
     };
     this.showAgeInConsole = function () {
@@ -145,7 +143,7 @@ function U() {
     }
 }
 var u = new U();
-
+u.askName().askAge().showAgeInConsole().showNameInAlert();
 /**
  * Написать фукнцию-калькулятор, которая работает следующим образом
  * calculate('+')(1)(2); // 3
@@ -154,17 +152,17 @@ var u = new U();
  */
 function calculate(operator) {
     /* put your code here */
-    return function(valueOne){
-        return function(valueTwo){
-            switch(operator){
+    return function (valueOne) {
+        return function (valueTwo) {
+            switch (operator) {
                 case '+':
-                return valueOne + valueTwo;
+                    return valueOne + valueTwo;
                 case '-':
-                return valueOne - valueTwo;
+                    return valueOne - valueTwo;
                 case '*':
-                return valueOne * valueTwo;
+                    return valueOne * valueTwo;
                 case '/':
-                return valueOne / valueTwo;
+                    return valueOne / valueTwo;
             }
         }
     }
@@ -174,9 +172,14 @@ function calculate(operator) {
  * Создайте конструктор-синглтон? Что такое синглтон?
  * new Singleton() === new Singleton
  */
-function Singleton() {
-    throw "undefined";
-}
+const Singleton = (function() {
+    var instance;
+    function Singleton() {
+      if (instance) return instance;
+      instance = this;
+    }
+     return Singleton;
+  })();
 
 /**
   * Создайте функцию ForceConstructor
