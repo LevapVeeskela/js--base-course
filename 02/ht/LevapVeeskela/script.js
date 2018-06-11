@@ -149,6 +149,7 @@ var u = new U();
  * calculate('*')(2)(3); // 6
  * Допустимые операции : + - * /
  */
+
 function calculate(operator) {
     /* put your code here */
     return function (valueOne) {
@@ -203,8 +204,20 @@ function ForceContructor(a, b, c) {
  * log(s(3)(4)(5)); // 12
  * Число вызовов может быть неограниченым
  */
-function sum() {
-    throw "undefined";
+
+function sum(a) {
+    var currentSum = a ? a : 0;
+
+    function s(b) {
+        currentSum += b ? b : 0;
+        return s;
+    }
+
+    s.toString = function () {
+        return currentSum;
+    };
+
+    return s;
 }
 
 function log(x) {
@@ -256,6 +269,5 @@ function curry(func) { }
 При клике по кнопкам [<] / [>] нужно реализовать листание календаря
 Добавть на страницу index.html вызов календаря
 */
-function drawInteractiveCalendar(el) { }
 
 
